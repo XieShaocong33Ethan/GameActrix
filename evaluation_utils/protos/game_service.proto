@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package orak.game;
+
+// Game environment service - one instance per game process
+service GameEnvService {
+  // Handshake: Returns session_token. Fails if another client connected.
+  rpc RegisterSession (Empty) returns (SessionResponse);
+
+  // Get game configuration and current progress
+  rpc GetGameConfig (SessionRequest) returns (GameConfig);
+
+  // Get current observation (text + image + game info)
+  rpc GetObservation (SessionRequest) returns (Observation);
+
+  // Execute action and return result with new observation
+  rpc Step (StepRequest) returns (StepResult);
+}
+
+message Empty {}
+
+message SessionRequest {
+  string session_token = 1;
+}
+
+message SessionResponse {
+  string session_token = 1;  // UUID v4
+}
+
+message GameConfig {
+  string game_id = 1;        // e.g., "pokemon_red", "star_craft"
+  int32 max_steps = 2;       // Per-episode step limit
+  int32 max_episodes = 3;    // Total episodes (always 3)
+  int32 current_episode = 4; // 0-indexed current episode
+  int32 current_step = 5;    // Current step within episode
+}
+
+message Observation {
+  string obs_text = 1;              // Text representation of observation
+  bytes obs_image = 2;              // Raw JPEG bytes (not base64)
+  map<string, string> info = 3;     // Game-specific info as string map
+}
+
+message StepRequest {
+  string session_token = 1;  // Required for authentication
+  string action = 2;         // Action string (game-specific format)
+  string request_id = 3;     // UUID for idempotency (optional)
+}
+
+message StepResult {
+  float score = 1;              // Current score
+  bool is_finished = 2;         // Episode finished flag
+  float avg_score = 3;          // Average score across episodes
+  Observation observation = 4;  // NEW observation after step
+}

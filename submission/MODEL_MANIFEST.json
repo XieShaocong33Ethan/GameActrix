@@ -1,0 +1,45 @@
+{
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "revision": {
+    "requested": null,
+    "resolved": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b"
+  },
+  "local_dir": "/root/autodl-tmp/models/Qwen__Qwen3-VL-8B-Instruct",
+  "hf_home": "/root/autodl-tmp/cache/",
+  "files": [
+    {
+      "path": "config.json",
+      "sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+      "size_bytes": 1474
+    },
+    {
+      "path": "generation_config.json",
+      "sha256": "8469742d1fce0de951c8909b26a2c0c0d8490837ce476efb114da9e0cefc4d44",
+      "size_bytes": 269
+    },
+    {
+      "path": "tokenizer.json",
+      "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+      "size_bytes": 7032403
+    },
+    {
+      "path": "tokenizer_config.json",
+      "sha256": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+      "size_bytes": 10868
+    },
+    {
+      "path": "preprocessor_config.json",
+      "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+      "size_bytes": 390
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "sha256": "520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070",
+      "size_bytes": 67759
+    }
+  ],
+  "notes": [
+    "赛道1需要按官方口径统计总参数；建议在最终提交材料中同时提供参数统计脚本与输出。",
+    "如需离线复现，请确保 revision 固定为不可变的 commit hash/tag，并保留本清单。"
+  ]
+}

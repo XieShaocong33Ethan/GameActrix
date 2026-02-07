@@ -1,0 +1,16 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.aicrowd
+game_logs/
+.env
+.DS_Store
+.cursor/
+logs/

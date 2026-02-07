@@ -1,0 +1,98 @@
+[
+  {
+    "episode_id": "twenty_fourty_eight-1",
+    "game_name": "twenty_fourty_eight",
+    "seed": null,
+    "inference_calls": 0,
+    "tokens": 0,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "twenty_fourty_eight-2",
+    "game_name": "twenty_fourty_eight",
+    "seed": null,
+    "inference_calls": 0,
+    "tokens": 0,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "twenty_fourty_eight-3",
+    "game_name": "twenty_fourty_eight",
+    "seed": null,
+    "inference_calls": 0,
+    "tokens": 0,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "super_mario-1",
+    "game_name": "super_mario",
+    "seed": null,
+    "inference_calls": 98,
+    "tokens": 156814,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "super_mario-2",
+    "game_name": "super_mario",
+    "seed": null,
+    "inference_calls": 96,
+    "tokens": 153760,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "super_mario-3",
+    "game_name": "super_mario",
+    "seed": null,
+    "inference_calls": 98,
+    "tokens": 156828,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "pokemon_red-1",
+    "game_name": "pokemon_red",
+    "seed": null,
+    "inference_calls": 120,
+    "tokens": 390563,
+    "final_score": 7.0
+  },
+  {
+    "episode_id": "pokemon_red-2",
+    "game_name": "pokemon_red",
+    "seed": null,
+    "inference_calls": 119,
+    "tokens": 386347,
+    "final_score": 7.0
+  },
+  {
+    "episode_id": "pokemon_red-3",
+    "game_name": "pokemon_red",
+    "seed": null,
+    "inference_calls": 122,
+    "tokens": 398719,
+    "final_score": 7.0
+  },
+  {
+    "episode_id": "star_craft-1",
+    "game_name": "star_craft",
+    "seed": null,
+    "inference_calls": 453,
+    "tokens": 823525,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "star_craft-2",
+    "game_name": "star_craft",
+    "seed": null,
+    "inference_calls": 381,
+    "tokens": 616773,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "star_craft-3",
+    "game_name": "star_craft",
+    "seed": null,
+    "inference_calls": 397,
+    "tokens": 714071,
+    "final_score": 1.0
+  }
+]

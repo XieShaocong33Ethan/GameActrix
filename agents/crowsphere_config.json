@@ -1,0 +1,83 @@
+{
+  "model": {
+    "name": "Qwen/Qwen3-VL-8B-Instruct",
+    "base_url": "http://127.0.0.1:8000/v1",
+    "max_model_len": 8192
+  },
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 512,
+    "guided_json": false,
+    "by_game": {
+      "super_mario": {
+        "guided_json": false,
+        "max_tokens": 256
+      }
+    }
+  },
+  "image_preproc": {
+    "short_side": 184,
+    "jpeg_quality": 85
+  },
+  "action_chunk": {
+    "k": {
+      "twenty_fourty_eight": 2,
+      "super_mario": 8,
+      "pokemon_red": 8,
+      "star_craft": 1
+    }
+  },
+  "twenty_fourty_eight": {
+    "use_model": false
+  },
+  "super_mario": {
+    "use_model": true,
+    "preproc": {
+      "mode": "evidence_only"
+    },
+    "vlm_sentinel": {
+      "enabled": false
+    }
+  },
+  "pokemon": {
+    "max_keys_per_step": 8,
+    "tool_use": {
+      "enabled": true,
+      "max_tool_rounds": 1,
+      "guided_json_stage_b_only": true,
+      "bypass_model_when_candidates": false
+    },
+    "action_pack": {
+      "default": 2,
+      "by_state": {
+        "Title": 1,
+        "Dialog": 2,
+        "Selection": 1,
+        "Field": 2,
+        "Battle": 1
+      }
+    },
+    "tools": {
+      "dialog_advance_repeats": 4,
+      "max_candidates": 6
+    }
+  },
+  "star_craft": {
+    "mode": "rules",
+    "bypass_model": false,
+    "disable_static_defense": true,
+    "enable_retreat": true,
+    "attack_min_time_seconds": 540,
+    "attack_army_threshold": 60,
+    "force_attack_army_supply": 100,
+    "tech_plan": "immortal",
+    "macro_policy": "two_base"
+  },
+  "concurrency": {
+    "vllm_global_lock": false
+  },
+  "logging": {
+    "output_dir": "logs",
+    "per_episode_jsonl": true
+  }
+}
