@@ -40,7 +40,7 @@ Key versions observed on the evaluation server
 For an automatically captured snapshot of Python executable, platform, environment variables, and key dependencies,
 see the evaluation logs in the official run directory, for example
 
-`submission/eval_artifacts/20260205_073454_online_309465/evaluation.log`
+`submission/eval_artifacts/20260207_222041_online_309532/evaluation.log`
 
 ## 3. Decoding Parameters and Image Preprocessing
 
@@ -126,4 +126,4 @@ Starter-kit runner (local mode)
 
 Official REMOTE full score reference
 
-`submission/eval_artifacts/20260205_073454_online_309465/EVALUATION_SUMMARY.json`
+`submission/eval_artifacts/20260207_222041_online_309532/EVALUATION_SUMMARY.json`

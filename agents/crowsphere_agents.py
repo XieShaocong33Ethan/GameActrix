@@ -4,7 +4,7 @@ from agents.crowsphere.engine import CrowSphereEngine
 
 
 class PokemonAgent:
-    TRACK = "TRACK1"
+    TRACK = "TRACK2"
 
     def __init__(self) -> None:
         self._engine = CrowSphereEngine()
@@ -14,7 +14,7 @@ class PokemonAgent:
 
 
 class TwentyFourtyEightAgent:
-    TRACK = "TRACK1"
+    TRACK = "TRACK2"
 
     def __init__(self) -> None:
         self._engine = CrowSphereEngine()
@@ -24,7 +24,7 @@ class TwentyFourtyEightAgent:
 
 
 class SuperMarioAgent:
-    TRACK = "TRACK1"
+    TRACK = "TRACK2"
 
     def __init__(self) -> None:
         self._engine = CrowSphereEngine()
@@ -34,7 +34,7 @@ class SuperMarioAgent:
 
 
 class StarCraftAgent:
-    TRACK = "TRACK1"
+    TRACK = "TRACK2"
 
     def __init__(self) -> None:
         self._engine = CrowSphereEngine()

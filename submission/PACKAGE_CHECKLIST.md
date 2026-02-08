@@ -1,4 +1,4 @@
-# Final Submission Package Checklist
+# Final Submission Package Checklist (Track 2)
 
 This checklist maps the official requirements to concrete files in this repository.
 
@@ -33,15 +33,15 @@ This checklist maps the official requirements to concrete files in this reposito
 ## 4. Reproducibility artifacts
 
 - Retokenizable model call logs
-  - `submission/eval_artifacts/20260205_073454_online_309465/llm_calls.jsonl`
+  - `submission/eval_artifacts/20260207_222041_online_309532/llm_calls.jsonl`
 
 ## 5. Evaluation summaries plus required metadata
 
 - Official REMOTE full score summary and per episode breakdown
-  - `submission/eval_artifacts/20260205_073454_online_309465/EVALUATION_SUMMARY.json`
-  - `submission/eval_artifacts/20260205_073454_online_309465/PER_EPISODE_BREAKDOWN.json`
-  - `submission/eval_artifacts/20260205_073454_online_309465/MODEL_DECLARATION.json`
-  - `submission/eval_artifacts/20260205_073454_online_309465/RAW_REQUESTS_README.md`
+  - `submission/eval_artifacts/20260207_222041_online_309532/EVALUATION_SUMMARY.json`
+  - `submission/eval_artifacts/20260207_222041_online_309532/PER_EPISODE_BREAKDOWN.json`
+  - `submission/eval_artifacts/20260207_222041_online_309532/MODEL_DECLARATION.json`
+  - `submission/eval_artifacts/20260207_222041_online_309532/RAW_REQUESTS_README.md`
 
 ## 6. Extra data needed at runtime
 

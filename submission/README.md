@@ -1,4 +1,4 @@
-# Final submission package
+# Final submission package (Track 2)
 
 ## 1) Delivery Checklist
 
@@ -10,7 +10,7 @@
      - `aicrowd` (AIcrowd SA)
      - `orak-krafton-eval` (Krafton evaluation)
 2. Runnable agent code
-   - This private GitLab repository (requires granting access to `@aicrowd` and `@orak-krafton-eval`)
+   - This GitHub repository (grant access to `@aicrowd` and `@orak-krafton-eval` if private)
 3. 2-page design and training PDF
    - `submission/design_and_training.pdf`
 4. Reproducibility artifacts
@@ -22,12 +22,12 @@
    - `PER_EPISODE_BREAKDOWN.json/.csv`
    - `RAW_REQUESTS_README.md`
 
-## 1.1) Prepared perfect-score evaluation artifacts (copied to submission/)
+## 1.1) Prepared perfect-score evaluation artifacts (Official online evaluation, REMOTE)
 
-To reduce the volume of the GitHub delivery repository, this repository only keeps one copy of the "Official online evaluation (REMOTE) perfect score" artifacts:
+This repository keeps one copy of the official Track 2 REMOTE full score artifacts:
 
-- Online evaluation deliverables: `submission/eval_artifacts/20260205_073454_online_309465/`
-  - Submission `309465`, Session `b41c3735201a4b82b860c24c036930d6`
+- Online evaluation deliverables: `submission/eval_artifacts/20260207_222041_online_309532/`
+  - Submission `309532`, Session `42e087c10c0a4323aa966a0b8da771cf`
   - Perfect scores for all four games (3 rounds each):
     - 2048: `1.0 / 1.0 / 1.0`
     - Mario: `1.0 / 1.0 / 1.0`
@@ -37,7 +37,11 @@ To reduce the volume of the GitHub delivery repository, this repository only kee
     - `EVALUATION_SUMMARY.json/.csv`, `PER_EPISODE_BREAKDOWN.json/.csv`, `MODEL_DECLARATION.json`
     - `llm_calls.jsonl` (Re-tokenizable text, including de-identified image placeholders)
     - `RAW_REQUESTS_README.md`
-    - `evaluation.log`, `official_online_eval_309465_console.log`
+    - `evaluation.log`, `official_online_eval_309532_console.log`
+
+Track selection note:
+- The REMOTE API session track is determined by `agents/crowsphere_agents.py` (class attribute `TwentyFourtyEightAgent.TRACK`),
+  which is set to `TRACK2` on this branch.
 
 ## 2) Shortest path for reproduction on a server
 

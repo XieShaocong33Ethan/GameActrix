@@ -1,0 +1,39 @@
+{
+  "generated_at_utc": "2026-02-07T23:56:31.392765Z",
+  "evaluation_episodes": 12,
+  "total_inference_calls": 1942,
+  "total_tokens": 3890490,
+  "mean_calls_per_episode": 161.83333333333334,
+  "mean_tokens_per_episode": 324207.5,
+  "tokenizer": {
+    "name": "cl100k_base",
+    "note": "tokens are counted from request.retoken_text; may be null if tiktoken is unavailable",
+    "available": true
+  },
+  "scores": {
+    "twenty_fourty_eight": {
+      "episodes_finished": 3,
+      "avg_final_score": 1.0,
+      "min_final_score": 1.0,
+      "max_final_score": 1.0
+    },
+    "super_mario": {
+      "episodes_finished": 3,
+      "avg_final_score": 1.0,
+      "min_final_score": 1.0,
+      "max_final_score": 1.0
+    },
+    "pokemon_red": {
+      "episodes_finished": 3,
+      "avg_final_score": 7.0,
+      "min_final_score": 7.0,
+      "max_final_score": 7.0
+    },
+    "star_craft": {
+      "episodes_finished": 3,
+      "avg_final_score": 1.0,
+      "min_final_score": 1.0,
+      "max_final_score": 1.0
+    }
+  }
+}

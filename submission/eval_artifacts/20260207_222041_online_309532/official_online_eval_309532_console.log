@@ -1,0 +1,25 @@
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                         AIcrowd Orak 2025 Evaluation                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────── Game Config ─────────────────────────────────╮
+│   Mode:              Remote                                                  │
+│   Game Data Path:    game_logs/20260207_222041                               │
+│   Submission #:      309532                                                  │
+│   Session #:         42e087c10c0a4323aa966a0b8da771cf                        │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+                                                                                
+ Game                     Status      Score   Elapsed                           
+──────────────────────────────────────────────────────                          
+ Twenty Fourty Eight   ✅ Completed     1.0    56m 1s                           
+ Super Mario           ✅ Completed     1.0    9m 55s                           
+ Pokemon Red           ✅ Completed     7.0   56m 40s                           
+                                                                                
+╭─────────────────────────────────── Events ───────────────────────────────────╮
+│ 07:56:30 Session completed. Cleaning up saved session id.                    │
+│ 07:56:30 All games completed successfully                                    │
+│ 07:56:30 Star Craft: Max episodes reached. Game finished.                    │
+│ 07:56:30 Star Craft: Game finished after 563 steps with final score: 1.0     │
+│ 07:56:30 Star Craft: Step 563, Episode: 3, Score: 1.0                        │
+│ 07:56:24 Star Craft: Step 562, Episode: 3, Score: 0.0                        │
+╰──────────────────────────────────────────────────────────────────────────────╯

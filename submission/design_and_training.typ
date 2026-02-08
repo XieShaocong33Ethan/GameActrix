@@ -119,4 +119,4 @@ Example commands
 = Evaluation Summary
 
 Official REMOTE evaluation achieved full score across 12 episodes. The summary file is
-`submission/eval_artifacts/20260205_073454_online_309465/EVALUATION_SUMMARY.json`.
+`submission/eval_artifacts/20260207_222041_online_309532/EVALUATION_SUMMARY.json`.

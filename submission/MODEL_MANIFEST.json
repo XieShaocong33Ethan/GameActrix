@@ -39,7 +39,7 @@
     }
   ],
   "notes": [
-    "赛道1需要按官方口径统计总参数；建议在最终提交材料中同时提供参数统计脚本与输出。",
-    "如需离线复现，请确保 revision 固定为不可变的 commit hash/tag，并保留本清单。"
+    "Track 2 has no parameter limit, but we still keep parameter count information for reproducibility and comparison.",
+    "For offline reproduction, pin the model revision to an immutable commit hash or tag and keep this manifest."
   ]
 }
