@@ -32,6 +32,14 @@ We use *Qwen/Qwen3-VL-8B-Instruct* as the only model dependency. The model is se
 compatible HTTP API. The resolved model revision is recorded in `submission/MODEL_MANIFEST.json`. Inference uses bf16
 weights with no quantization and temperature 0 for deterministic decoding.
 
+== Agent Architecture
+We implement a single shared engine (`agents/crowsphere/engine.py`) that handles all games with the same loop:
+preprocess observation -> build prompt -> query the model -> parse one JSON ActionPlan -> validate -> execute.
+Game-specific behavior is isolated into:
+(1) observation preprocessing to generate compact evidence and candidate menus,
+(2) prompt templates, and
+(3) adapters that deterministically validate the model output and map it to environment actions.
+
 == Inputs
 Each step provides a text observation (`obs_str`) and optionally an image. We apply deterministic image preprocessing
 (short side resize and JPEG encoding) and game specific text filtering to control latency and prompt length.
@@ -43,8 +51,9 @@ converts it into the environment action string, and executes at most one action 
 == Game Specific Handling
 This section summarizes how prompts and action plans are tailored per game.
 
-*2048* We parse the board from `obs_str` and choose a direction with a fixed deterministic search. The agent emits one JSON
-action with one direction and does not rely on text generation for this game.
+*2048* We parse the board from `obs_str` and compute a compact Move Analysis block with deterministic expectimax expected
+score estimates per direction. The model outputs one JSON action with one direction (`up/down/left/right`). We execute
+one action per step because new tiles spawn stochastically. (We do not bypass the model for 2048 in evaluation.)
 
 *Super Mario* We convert `obs_str` into a compact scene evidence block that highlights Mario position, nearby hazards, and
 the nearest threat distance. We also generate a small menu of candidate jump profiles as jump levels in range 0 to 6 and
@@ -67,9 +76,8 @@ on game time to keep episode boundaries and map rotation stable in evaluation se
 
 == Inference Loop and Validation
 At each environment step, the agent
-1) builds a prompt from the current observation and a small amount of game memory, 2) queries the model when enabled
-(Mario, Pokemon, StarCraft II; 2048 is deterministic by default), 3) parses the JSON ActionPlan, and 4) executes at most one
-environment action per step.
+1) builds a prompt from the current observation and a small amount of game memory, 2) queries the model, 3) parses the
+JSON ActionPlan, and 4) executes at most one environment action per step.
 For Super Mario, we enforce one action per step to avoid stale macro actions in fast changing scenes.
 
 == Key Configuration (Default)
@@ -83,6 +91,7 @@ For Super Mario, we enforce one action per step to avoid stale macro actions in 
   [Temperature], [0.0],
   [Max output tokens], [512 (Mario 256)],
   [Image preprocessing], [short side 184, JPEG quality 85],
+  [Default eval config], [`agents/crowsphere_config.json` (unless `CROWSPHERE_CONFIG` is set)],
   [Reproducibility], [HF_HOME on data disk; per call JSONL logs],
 )
 
@@ -119,4 +128,4 @@ Example commands
 = Evaluation Summary
 
 Official REMOTE evaluation achieved full score across 12 episodes. The summary file is
-`submission/eval_artifacts/20260207_222041_online_309532/EVALUATION_SUMMARY.json`.
+`submission/eval_artifacts/20260208_163116_online_309561/EVALUATION_SUMMARY.json`.

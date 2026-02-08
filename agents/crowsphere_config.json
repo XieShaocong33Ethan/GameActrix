@@ -21,14 +21,14 @@
   },
   "action_chunk": {
     "k": {
-      "twenty_fourty_eight": 2,
+      "twenty_fourty_eight": 1,
       "super_mario": 8,
       "pokemon_red": 8,
       "star_craft": 1
     }
   },
   "twenty_fourty_eight": {
-    "use_model": false
+    "use_model": true
   },
   "super_mario": {
     "use_model": true,

@@ -26,8 +26,6 @@ from agents.crowsphere.tool_definitions import ToolResult
 from agents.crowsphere.engine_sc2 import maybe_reset_sc2_episode, update_sc2_context
 from agents.crowsphere.engine_2048 import (
     act_2048_with_tool,
-    log_2048_action_value,
-    pick_2048_dir_from_preproc,
 )
 from agents.crowsphere.engine_pokemon import (
     act_pokemon_with_tool,
@@ -300,30 +298,16 @@ class CrowSphereEngine:
         return next_action
 
     def _dispatch_2048(self, preproc, game_info, image_data_url, image_meta, prev_image_url) -> str:
-        """2048：默认走确定性 expectimax（无需模型），可选工具模式。"""
+        """2048：必须由模型输出最终方向（可选 calculator 工具调用）。"""
         game = "twenty_fourty_eight"
         cfg_2048 = self._config.get(game) if isinstance(self._config.get(game), dict) else {}
         use_model = bool(cfg_2048.get("use_model", True))
 
         if not use_model:
-            final_action = pick_2048_dir_from_preproc(preproc.text)
-            self._action_queue[game] = []
-            self._update_memory_after_action(game=game, obs_text=preproc.text, action_str=final_action)
-
-            record: dict[str, Any] = {
-                "event": "act",
-                "game": game,
-                "step_id": self._step_id,
-                "status": "deterministic",
-                "policy": "expectimax_from_preproc",
-                "final_action_str": final_action,
-                "obs_text": preproc.text,
-                "obs_text_metadata": getattr(preproc, "metadata", {}),
-                "image": image_meta,
-            }
-            log_2048_action_value(record, preproc.text, final_action)
-            self._logger.write(record)
-            return final_action
+            raise ValueError(
+                "2048 必须启用模型决策：请在 agents/crowsphere_config.json 中设置 "
+                '"twenty_fourty_eight": {"use_model": true}'
+            )
 
         params = build_generation_params(config=self._config, game=game, game_info=game_info)
         return act_2048_with_tool(
