@@ -1,0 +1,13 @@
+episode_id,game_name,seed,inference_calls,tokens,final_score
+twenty_fourty_eight-1,twenty_fourty_eight,,954,880728,1.0
+twenty_fourty_eight-2,twenty_fourty_eight,,954,880728,1.0
+twenty_fourty_eight-3,twenty_fourty_eight,,979,903784,1.0
+super_mario-1,super_mario,,99,158416,1.0
+super_mario-2,super_mario,,101,161700,1.0
+super_mario-3,super_mario,,96,153760,1.0
+pokemon_red-1,pokemon_red,,123,402877,7.0
+pokemon_red-2,pokemon_red,,127,414479,7.0
+pokemon_red-3,pokemon_red,,113,371975,7.0
+star_craft-1,star_craft,,390,694516,1.0
+star_craft-2,star_craft,,380,611824,1.0
+star_craft-3,star_craft,,412,727822,1.0

@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-02-08T18:10:51.712198Z",
+  "models": [
+    {
+      "name": "Qwen/Qwen3-VL-8B-Instruct",
+      "version": "Qwen/Qwen3-VL-8B-Instruct",
+      "provider": "openai_compatible",
+      "parameter_count": 8000000000,
+      "base_url": "http://127.0.0.1:8000/v1"
+    }
+  ]
+}

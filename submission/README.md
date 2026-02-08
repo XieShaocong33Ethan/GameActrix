@@ -1,54 +1,56 @@
-# Final submission package
+# Final Submission Package
 
-## 1) Delivery Checklist
+This folder contains the files required by the Orak Game Agent Challenge 2025 submission checklist, plus short
+reproducibility notes for reviewers.
+
+## 1) What we provide (mapped to official requirements)
 
 1. Model artifacts and documentation
-   - Model: `Qwen/Qwen3-VL-8B-Instruct`
-   - Exact revision: see `submission/MODEL_MANIFEST.json` (currently resolved as `0c351dd01ed87e9c1b53cbc748cba10e6187ff3b`)
-   - Model format and inference specifications: see `submission/MODEL_ARTIFACTS_AND_RUNTIME.md`
-   - Needs to be shared as a gated Hugging Face repository with access granted to:
+   - Base model id + exact resolved revision: `submission/MODEL_MANIFEST.json`
+   - Runtime / serving / decoding details: `submission/MODEL_ARTIFACTS_AND_RUNTIME.md`
+   - If the base model repository is gated, grant access to:
      - `aicrowd` (AIcrowd SA)
      - `orak-krafton-eval` (Krafton evaluation)
 2. Runnable agent code
-   - This private GitLab repository (requires granting access to `@aicrowd` and `@orak-krafton-eval`)
+   - Starter-kit runner: `run.py`, `evaluation_utils/`
+   - CrowSphere agent: `agents/crowsphere/`, `agents/crowsphere_agents.py`, `agents/config.py`
+   - Default evaluation config: `agents/crowsphere_config.json`
 3. 2-page design and training PDF
-   - `submission/design_and_training.pdf`
+   - PDF: `submission/design_and_training.pdf`
+   - Source: `submission/design_and_training.typ`
 4. Reproducibility artifacts
-   - `MODEL_MANIFEST.json` (Model source and file checksums)
-   - `llm_calls.jsonl` (Re-tokenizable text + key hashes)
+   - Retokenizable model-call logs: `submission/eval_artifacts/*/llm_calls.jsonl`
 5. Evaluation summaries plus required metadata
-   - `MODEL_DECLARATION.json`
    - `EVALUATION_SUMMARY.json/.csv`
    - `PER_EPISODE_BREAKDOWN.json/.csv`
+   - `MODEL_DECLARATION.json`
    - `RAW_REQUESTS_README.md`
 
-## 1.1) Prepared perfect-score evaluation artifacts (copied to submission/)
+## 2) Included official REMOTE evaluation artifacts (full score)
 
-To reduce the volume of the GitHub delivery repository, this repository only keeps one copy of the "Official online evaluation (REMOTE) perfect score" artifacts:
+To keep the GitHub delivery repository small, we include a single official REMOTE full-score run:
 
-- Online evaluation deliverables: `submission/eval_artifacts/20260205_073454_online_309465/`
-  - Submission `309465`, Session `b41c3735201a4b82b860c24c036930d6`
-  - Perfect scores for all four games (3 rounds each):
-    - 2048: `1.0 / 1.0 / 1.0`
-    - Mario: `1.0 / 1.0 / 1.0`
-    - Pokemon: `7.0 / 7.0 / 7.0`
-    - StarCraft: `1.0 / 1.0 / 1.0`
-  - Key files:
-    - `EVALUATION_SUMMARY.json/.csv`, `PER_EPISODE_BREAKDOWN.json/.csv`, `MODEL_DECLARATION.json`
-    - `llm_calls.jsonl` (Re-tokenizable text, including de-identified image placeholders)
-    - `RAW_REQUESTS_README.md`
-    - `evaluation.log`, `official_online_eval_309465_console.log`
+- `submission/eval_artifacts/20260208_163116_online_309561/`
+  - Submission `309561`, Session `301f00dff97440d69d21f7ce88dc24e6`
+  - Full score across 12 episodes:
+    - 2048: 1.0 (model-driven; non-zero inference calls)
+    - Super Mario: 1.0
+    - Pokemon Red: 7.0
+    - StarCraft II: 1.0
 
-## 2) Shortest path for reproduction on a server
+## 3) Compliance defaults (avoid misconfiguration)
 
-Prerequisites:
-- A Linux machine with NVIDIA GPU
-- Start vLLM locally and listen on `http://127.0.0.1:8000/v1`
-- vLLM loads the model `Qwen/Qwen3-VL-8B-Instruct` and fixes inference parameters (see `submission/MODEL_ARTIFACTS_AND_RUNTIME.md` for details)
+The evaluation entrypoint loads `agents/crowsphere_config.json` by default (unless `CROWSPHERE_CONFIG` is set).
 
-Example steps:
+Key defaults:
 
-1) Start vLLM (in a separate terminal)
+- 2048: `twenty_fourty_eight.use_model=true` (the engine raises an error if disabled)
+- Pokemon Red: `pokemon.tool_use.bypass_model_when_candidates=false`
+- Super Mario: no deterministic action override; invalid outputs trigger retries (model re-chooses)
+
+## 4) Minimal reproduction steps (Linux + NVIDIA GPU)
+
+1) Start vLLM:
 
 ```bash
 vllm serve Qwen/Qwen3-VL-8B-Instruct \
@@ -62,7 +64,7 @@ vllm serve Qwen/Qwen3-VL-8B-Instruct \
   --limit-mm-per-prompt.video 0
 ```
 
-2) Run the starter-kit in the root directory of the code package where this directory is located
+2) Run the starter-kit:
 
 ```bash
 uv sync
@@ -70,15 +72,8 @@ GAME_DATA_DIR=game_logs_local_$(date -u +%Y%m%d_%H%M%S) \
 uv run python run.py --local
 ```
 
-Run only a single game (Example, StarCraft II):
+## 5) Build the 2-page PDF (Typst)
 
 ```bash
-SC2PATH=/path/to/StarCraftII \
-ORAK_STARCRAFT_RGB_RENDER=0 \
-GAME_DATA_DIR=game_logs_sc2_local_$(date -u +%Y%m%d_%H%M%S) \
-uv run python run.py --local --games star_craft
+typst compile submission/design_and_training.typ submission/design_and_training.pdf
 ```
-
-Notes:
-- Pokémon Red's `executables/` and `processed_map/` are already included in this code package and do not require additional building.
-- StarCraft II requires a valid SC2 installation directory, specified via `SC2PATH`.

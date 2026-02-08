@@ -1,0 +1,98 @@
+[
+  {
+    "episode_id": "twenty_fourty_eight-1",
+    "game_name": "twenty_fourty_eight",
+    "seed": null,
+    "inference_calls": 954,
+    "tokens": 880728,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "twenty_fourty_eight-2",
+    "game_name": "twenty_fourty_eight",
+    "seed": null,
+    "inference_calls": 954,
+    "tokens": 880728,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "twenty_fourty_eight-3",
+    "game_name": "twenty_fourty_eight",
+    "seed": null,
+    "inference_calls": 979,
+    "tokens": 903784,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "super_mario-1",
+    "game_name": "super_mario",
+    "seed": null,
+    "inference_calls": 99,
+    "tokens": 158416,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "super_mario-2",
+    "game_name": "super_mario",
+    "seed": null,
+    "inference_calls": 101,
+    "tokens": 161700,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "super_mario-3",
+    "game_name": "super_mario",
+    "seed": null,
+    "inference_calls": 96,
+    "tokens": 153760,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "pokemon_red-1",
+    "game_name": "pokemon_red",
+    "seed": null,
+    "inference_calls": 123,
+    "tokens": 402877,
+    "final_score": 7.0
+  },
+  {
+    "episode_id": "pokemon_red-2",
+    "game_name": "pokemon_red",
+    "seed": null,
+    "inference_calls": 127,
+    "tokens": 414479,
+    "final_score": 7.0
+  },
+  {
+    "episode_id": "pokemon_red-3",
+    "game_name": "pokemon_red",
+    "seed": null,
+    "inference_calls": 113,
+    "tokens": 371975,
+    "final_score": 7.0
+  },
+  {
+    "episode_id": "star_craft-1",
+    "game_name": "star_craft",
+    "seed": null,
+    "inference_calls": 390,
+    "tokens": 694516,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "star_craft-2",
+    "game_name": "star_craft",
+    "seed": null,
+    "inference_calls": 380,
+    "tokens": 611824,
+    "final_score": 1.0
+  },
+  {
+    "episode_id": "star_craft-3",
+    "game_name": "star_craft",
+    "seed": null,
+    "inference_calls": 412,
+    "tokens": 727822,
+    "final_score": 1.0
+  }
+]
