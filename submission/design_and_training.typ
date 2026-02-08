@@ -51,21 +51,19 @@ converts it into the environment action string, and executes at most one action 
 == Game Specific Handling
 This section summarizes how prompts and action plans are tailored per game.
 
-*2048* We parse the board from `obs_str` and compute a compact Move Analysis block with deterministic expectimax expected
-score estimates per direction. The model outputs one JSON action with one direction (`up/down/left/right`). We execute
-one action per step because new tiles spawn stochastically. (We do not bypass the model for 2048 in evaluation.)
+*2048* We parse the board from obs_str and use expectimax to provide candidate analysis for each direction, forming a compact Move Analysis block as the prompt. After receiving our prompt, the model makes its own decision and outputs a JSON action with a single direction (up/down/left/right). We execute one action per step because new tiles spawn stochastically.
 
 *Super Mario* We convert `obs_str` into a compact scene evidence block that highlights Mario position, nearby hazards, and
 the nearest threat distance. We also generate a small menu of candidate jump profiles as jump levels in range 0 to 6 and
-annotate each candidate with a risk report computed from deterministic geometry checks. The model outputs one JSON action
-with `jump_level` and an optional candidate label. The adapter validates that the jump level respects `max_jump_level`,
+annotate each candidate with a risk report as the prompt. After receiving our prompt, the model makes its own decision and outputs one JSON action
+with `jump_level` and an optional candidate label. The adapter validates that the jump level respects jump level range(under max_jump_level),
 matches the candidate menu if a label is provided, and triggers short retries when the output is inconsistent. We execute
 one action per step to stay aligned with fast scene changes.
 
-*Pokemon Red* Each step runs deterministic decision support that infers user interface mode, map context, and milestone
+*Pokemon Red* Each step runs decision support that infers user interface mode, map context, and milestone
 progress, then produces a short candidate list. A candidate is either a key sequence or an official environment tool call
 such as moving to a coordinate or interacting with the next object. The prompt includes progress, a compact map summary,
-and the candidate list. The model selects one candidate by copying it into the JSON output. The adapter requires an exact
+and the candidate list. The model selects one candidate into the JSON output. The adapter requires an exact
 match to the provided candidates and interrupts any queued sequence when the user interface mode changes.
 
 *StarCraft II* We extract key counters from the text observation such as time, resources, supply, and unit counts and
